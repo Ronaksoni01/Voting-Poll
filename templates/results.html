@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel="stylesheet" href="/static/css/style.css">
+	<style>
+		.mains{
+			background-image: url("/static/image/clay-banks-JU1N79c2i8g-unsplash.jpg");
+			background-position: center;
+			background-size: cover;
+			height: 730px;
+		}
+	</style>
+</head>
+
+<body>
+	
+	{% extends 'base.html' %}
+	{% block content %}
+	<div class="mains">
+	<h1 class="mb-5 text-center">{{ question.question_text }}</h1>
+
+	<ul class="list-group mb-5">
+		{% for choice in question.choice_set.all %}
+		<li class="list-group-item">
+			{{ choice.choice_text }} <span class="badge badge-success float-right">{{ choice.votes }}
+				vote{{ choice.votes | pluralize }}</span>
+		</li>
+		{% endfor %}
+	</ul>
+
+	<a class="btn btn-secondary" href="{% url 'polls:index' %}">Back To Polls</a>
+	</div>
+</body>
+
+</html>

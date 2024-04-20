@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		.img {
+			background-image: url("/static/image/kelly-sikkema-xoU52jUVUXA-unsplash.jpg");
+			background-position: center;
+			background-size: cover;
+			height: 730px;
+		}
+
+		.list-group-item:first-child {
+			background-color: rgb(207, 170, 190);
+			border-top-left-radius: 0.25rem;
+			border-top-right-radius: 0.25rem;
+		}
+
+		.list-group-item+.list-group-item {
+			background-color: rgb(221, 216, 223);
+			border-top-width: 0;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="img">
+		{% extends 'base.html' %}
+		{% block content %}
+		<h1 class="mb-5 text-center">{{ question.question_text }}</h1>
+
+		<ul class="list-group mb-5">
+			{% for choice in question.choice_set.all %}
+			<li class="list-group-item">
+				{{ choice.choice_text }} <span class="badge badge-success float-right">{{ choice.votes }}
+					vote{{ choice.votes | pluralize }}</span>
+			</li>
+			{% endfor %}
+		</ul>
+
+		<a class="btn btn-secondary" href="{% url 'Votes:index' %}">Back To Polls</a>
+		<a class="btn btn-dark" href="{% url 'Votes:detail' question.id %}">Vote again?</a>
+		{% endblock %}
+	</div>
+</body>
+
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		body{
+			background-image: url("/static/image/mos-design-NinDPAtx0w4-unsplash.jpg");
+			background-position: center;
+			background-size: cover;
+		}
+	
+	</style>
+	<link rel="stylesheet" href="/static/css/style.css">
+</head>
+
+<body>
+	
+	<div class="img">
+		{% extends 'base.html' %}
+		{% block content %}
+		<marquee style="color:rgb(0, 0, 0); font-size: 20px;">
+			⚡️Welcome To Polling ⚡️
+			  🚀Website Connect
+			  To Your First Voting Feature of Tomorrow
+			  Today.🚀
+			  
+		  </marquee>
+		<div class="card text-center" style="margin-top: 400px; border-radius:20px;">
+			<div class="card-body"  >
+				<h1 style="text-align: center;">Welcome To Pooling Website!</h1>
+				<p style="margin-left: 100px;">Polling Website. Cast your vote</p>
+				<a class="btn btn-dark" href="{% url 'Votes:index' %}">
+					View Available Polls</a>
+			</div>
+		</div>
+		{% endblock %}
+	</div>
+</body>
+</html>
